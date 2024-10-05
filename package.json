@@ -1,6 +1,6 @@
 {
   "name": "datarock-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An unofficial client for integrating with Datarock's Public API",
   "type": "module",
   "main": "./dist/index.js",
