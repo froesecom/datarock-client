@@ -41,7 +41,8 @@
     "url": "git+https://github.com/froesecom/datarock-client.git"
   },
   "keywords": [
-    "Datarock"
+    "Datarock",
+    "typescript"
   ],
   "bugs": {
     "url": "https://github.com/froesecom/datarock-client/issues"
