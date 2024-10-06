@@ -1,0 +1,2 @@
+- use github actions to run tests
+- configure github branches and protection rules

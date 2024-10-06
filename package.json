@@ -14,6 +14,7 @@
     "pretty": "prettier ./ --write",
     "type-check": "tsc --noEmit",
     "build": "tsup",
+    "ci": "npm run type-check && npm run lint",
     "test": "jest"
   },
   "author": "Erik Froese",
