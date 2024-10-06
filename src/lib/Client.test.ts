@@ -1,5 +1,6 @@
 import { TEST_KEY } from "../__test__/TEST_KEY"
 import { DatarockClient } from "./Client"
+
 describe("DatarockClient", () => {
   const email = "foo@bar.com"
   const privateKey = TEST_KEY
