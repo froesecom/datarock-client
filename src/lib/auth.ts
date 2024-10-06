@@ -8,6 +8,12 @@ interface RequestParams {
   email: string
   issuedTime?: Date
 }
+
+export interface AuthHeaders {
+  signature: string
+  "x-api-user": string
+}
+
 function validatRequestParams(params: RequestParams): void {
   REQUIRED_PARAMS.forEach((key) => {
     // @ts-expect-error the keys match RequestParams
@@ -21,7 +27,7 @@ export function generateRequestHeaders({
   requestUrl,
   email,
   issuedTime = new Date(),
-}: RequestParams) {
+}: RequestParams): AuthHeaders {
   validatRequestParams({ privateKey, requestUrl, email, issuedTime })
   const iat = Math.floor(issuedTime.getTime() / 1000)
   const requestStringToHash = `${email}/${iat}/${requestUrl}`

@@ -1,4 +1,4 @@
-import { generateRequestHeaders } from "./utils"
+import { generateRequestHeaders } from "./auth"
 import { TEST_KEY } from "../__test__/TEST_KEY"
 
 describe("generateRequestHeaders()", () => {
