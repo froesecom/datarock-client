@@ -1,3 +1,6 @@
+import { Command, CommandOutput } from "./commands/Command"
+import { generateRequestHeaders } from "./auth"
+
 interface DatarockClientParams {
   privateKey: string
   email: string
@@ -11,6 +14,16 @@ export class DatarockClient {
     validateParmas({ privateKey, email })
     this.email = email
     this.privateKey = privateKey
+  }
+
+  public async send(command: Command): CommandOutput {
+    // TODO: implement options
+    const auth = generateRequestHeaders({
+      email: this.email,
+      privateKey: this.privateKey,
+      requestUrl: command.endpoint(),
+    })
+    return command.resolve({ auth })
   }
 }
 

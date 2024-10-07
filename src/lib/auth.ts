@@ -9,7 +9,7 @@ interface RequestParams {
   issuedTime?: Date
 }
 
-export interface AuthHeaders {
+export interface AuthHeaders extends Record<string, string> {
   signature: string
   "x-api-user": string
 }
