@@ -12,6 +12,8 @@ An unofficial library for integrating with [Datarocks's](https://datarock.com.au
 
 Read [Datarock's Public API documentation](https://api-docs.prod.datarock.com.au/index.html) to understand the API interface and return values.
 
+
+#### example
 ```
 import { DatarockClient, ListProjectsCommand /* or any other command you want to use */ } from "datarock-client"
 
@@ -21,7 +23,7 @@ const privateKey = "your key here" // the privateKey associated with the public 
 // create a Datarock client
 const client = new DatarockClient({ email, privateKey })
 
-// send the client the commmany. See "Commands" below.
+// send the client the command. See "Commands" below.
 const response = await client.send(new ListProjectsCommand())
 
 if (response.ok) {
