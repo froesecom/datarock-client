@@ -8,8 +8,8 @@ An unofficial library for integrating with [Datarocks's](https://datarock.com.au
 
 `npm install datarock-client`
 
-
 ### Usage
+
 Read [Datarock's Public API documentation](https://api-docs.prod.datarock.com.au/index.html) to understand the API interface and return values.
 
 ```
@@ -37,10 +37,22 @@ if (response.ok) {
 ```
 
 ## Available Commands
+
 See [Datarock's Public API documentation](https://api-docs.prod.datarock.com.au/index.html) to understand the API interface and return values.
 
 ### Projects
 
 **ListProjectsCommand\<void\>: Promise\<Response\>**
+List projects asssociated with your account
 
 `new ListProjectsCommand()`
+
+### Holes
+
+**ListHolesCommand\<{projectUuid}\>: Promise\<Response\>**
+List holes asssociated with a project
+
+```
+const projectUuid = "some-uuid" // project uuids can be deduced from the ListProjectsCommand
+new ListProjectsCommand({projectUuid})
+```
