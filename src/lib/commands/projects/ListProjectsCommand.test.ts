@@ -10,6 +10,10 @@ global.fetch = jest.fn(() =>
 ) as jest.Mock
 
 describe("ListProjectsCommand", () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   const expectedEndpoint = `${config.domain()}/projects`
 
   it("returns the endpoint", () => {
