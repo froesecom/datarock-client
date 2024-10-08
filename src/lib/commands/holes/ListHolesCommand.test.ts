@@ -19,9 +19,15 @@ describe("ListHolesCommand", () => {
     expect(command.endpoint()).toEqual(expectedEndpoint)
   })
 
-  it("validates the input", () => {
+  it("validates the projectUuid presence", () => {
     // @ts-expect-error testing the runtime case
     expect(() => new ListHolesCommand({})).toThrow("projectUuid is required")
+  })
+
+  it("validates the projectUuid not empty", () => {
+    expect(() => new ListHolesCommand({ projectUuid: "" })).toThrow(
+      "projectUuid is required",
+    )
   })
 
   it("requests holes", async () => {

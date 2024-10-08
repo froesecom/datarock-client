@@ -8,7 +8,7 @@ export interface ListHolesCommandInput {
 function holesCommandInputValidate({
   projectUuid,
 }: ListHolesCommandInput): void {
-  if (!projectUuid && projectUuid !== "") {
+  if (!projectUuid || projectUuid === "") {
     throw new Error("projectUuid is required")
   }
 }
