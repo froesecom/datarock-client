@@ -7,7 +7,17 @@ import eslintJest from "eslint-plugin-jest"
 
 export default [
   {
-    rules: { semi: ["error", "always"] },
+    rules: {
+      semi: ["error", "always"],
+      "@typescript-eslint/no-unused-vars": [
+        "warn", // or "error"
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
+    },
     languageOptions: { globals: globals.browser },
     plugins: { jest: eslintJest },
   },

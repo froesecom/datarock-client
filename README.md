@@ -12,8 +12,8 @@ An unofficial library for integrating with [Datarocks's](https://datarock.com.au
 
 Read [Datarock's Public API documentation](https://api-docs.prod.datarock.com.au/index.html) to understand the API interface and return values.
 
-
 #### example
+
 ```
 import { DatarockClient, ListProjectsCommand /* or any other command you want to use */ } from "datarock-client"
 
@@ -33,7 +33,7 @@ if (response.ok) {
   // do something with the result
 
 } else {
-  // handle the unsuccesful response
+  // handle the unsuccessful response
 }
 
 ```
@@ -45,6 +45,7 @@ See [Datarock's Public API documentation](https://api-docs.prod.datarock.com.au/
 ### Projects
 
 **ListProjectsCommand\<void\>: Promise\<Response\>**
+
 List projects asssociated with your account
 
 `new ListProjectsCommand()`
@@ -52,9 +53,10 @@ List projects asssociated with your account
 ### Holes
 
 **ListHolesCommand\<{projectUuid}\>: Promise\<Response\>**
+
 List holes asssociated with a project
 
 ```
 const projectUuid = "some-uuid" // project uuids can be deduced from the ListProjectsCommand
-new ListProjectsCommand({projectUuid})
+new ListHolesCommand({projectUuid})
 ```
