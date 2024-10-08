@@ -60,3 +60,25 @@ List holes asssociated with a project
 const projectUuid = "some-uuid" // project uuids can be deduced from the ListProjectsCommand
 new ListHolesCommand({projectUuid})
 ```
+
+**CreateExportCommand\<{projectUuid, holeIds, lastUpdatedSince, lastUpdatedBefore, artefactType}\>:
+  Promise\<Response\>**
+
+Request an export for a set of holes, for a given resource.
+
+```
+const projectUuid = "some-uuid" // project uuids can be deduced from the ListProjectsCommand
+const artefactType = "depth_registration" // see Datarock API documentation for list of resources
+const lastUpdatedBefore = Date.now()
+const DAY_IN_MILLISECONDS = 24 * 60 * 60 * 1000
+// yesterday (not accounting for day light savings, etc)
+const lastUpdatedSince = Date.now() - DAY_IN_MILLISECONDS
+
+new CreateExportCommand({
+    projectUuid,
+    holeIds,
+    artefactType,
+    lastUpdatedSince,
+    lastUpdatedBefore,
+})
+```
