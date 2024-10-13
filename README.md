@@ -45,7 +45,7 @@ See [Datarock's Public API documentation](https://api-docs.prod.datarock.com.au/
 ### Projects
 ---
 
-**ListProjectsCommand\<void\>: Promise\<Response\>**
+**ListProjectsCommand\(void\): Promise\<Response\>**
 
 List projects asssociated with your account
 
@@ -54,7 +54,7 @@ List projects asssociated with your account
 ### Holes
 ---
 
-**ListHolesCommand\<{projectUuid}\>: Promise\<Response\>**
+**ListHolesCommand\({projectUuid: string})\: Promise\<Response\>**
 
 List holes asssociated with a project
 
@@ -66,8 +66,16 @@ new ListHolesCommand({projectUuid})
 ### Exports
 ---
 
-**CreateExportCommand\<{projectUuid, holeIds, lastUpdatedSince, lastUpdatedBefore, artefactType}\>:
+**CreateExportCommand\(Input\):
   Promise\<Response\>**
+
+  _interface Input {
+                        projectUuid: string;
+                        holeIds: string[];
+                        artefactType: string;
+                        lastUpdatedSince?: number;
+                        lastUpdatedBefore?: number;
+                    }_
 
 Request an export for a set of holes, for a given resource.
 
@@ -75,10 +83,10 @@ Request an export for a set of holes, for a given resource.
 const projectUuid = "some-uuid" // project uuids can be deduced from the ListProjectsCommand
 const artefactType = "depth_registration" // see Datarock API documentation for list of resources
 const holeIds = ["foo", "bar"] // can be deduced from the ListHolesCommand
-const lastUpdatedBefore = Date.now()
+const lastUpdatedBefore = Date.now() // optional
 const DAY_IN_MILLISECONDS = 24 * 60 * 60 * 1000
 // yesterday (not accounting for day light savings, etc)
-const lastUpdatedSince = Date.now() - DAY_IN_MILLISECONDS
+const lastUpdatedSince = Date.now() - DAY_IN_MILLISECONDS // optional
 
 new CreateExportCommand({
     projectUuid,
@@ -86,5 +94,25 @@ new CreateExportCommand({
     artefactType,
     lastUpdatedSince,
     lastUpdatedBefore,
+})
+```
+
+**ListExportsCommand\(Input\):
+  Promise\<Response\>**
+
+  _interface Input {
+                        limit?: number;
+                        offset?: number;
+                    }_
+
+List all existing exports.
+
+```
+const limit = 500 // Optional. See Datarock's docs for defaults
+const offset = 0 // Optional. See Datarock's docs for defaults
+
+new ListExportsCommand({
+    limit,
+    offset
 })
 ```
